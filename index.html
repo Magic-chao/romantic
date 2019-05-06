@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>恋爱计时器</title>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+            background-image: url('bg.jpg');
+            font-size: 85%;
+            margin: 0;
+        }
+        
+        h2 {
+            font-size: 220%;
+            font-weight: 400;
+        }
+        
+        .content {
+            position: absolute;
+            width: 100%;
+            top: 40%;
+            transform: translate(0, -50%);
+            text-align: center;
+        }
+        
+        .timer {
+            font-size: 180%;
+            line-height: 1.5;
+            margin: 1em 0;
+        }
+        
+        .timer b {
+            color: rgb(253, 99, 125);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <h2>姣姣，我们已经在一起了</h2>
+        <div class="timer">
+            <b id="d"></b> Days <b id="h"></b> Hours <b id="m"></b> Minutes <b id="s"></b> Seconds
+        </div>
+    </div>
+
+    <script>
+        function timer() {
+            
+            var date1= '2018/11/23 00:00:00';  //开始时间
+            var date2 = new Date();    //结束时间
+            var date3 = date2.getTime() - new Date(date1).getTime();   //时间差的毫秒数      
+
+            //------------------------------
+
+            //计算出相差天数
+            var days=Math.floor(date3/(24*3600*1000))
+
+            //计算出小时数
+
+            var leave1=date3%(24*3600*1000)    //计算天数后剩余的毫秒数
+            var hours=Math.floor(leave1/(3600*1000))
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            //计算相差分钟数
+            var leave2=leave1%(3600*1000)        //计算小时数后剩余的毫秒数
+            var minutes=Math.floor(leave2/(60*1000))
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            //计算相差秒数
+            var leave3=Math.floor(leave2%(60*1000)/1000)      //计算分钟数后剩余的毫秒数
+            if (leave3 < 10) {
+                leave3 = "0" + leave3;
+            }
+            
+            var start = new Date('2018/11/23 00:00:00'); // 2015.7.2
+            var t = new Date() - start;
+            var h = ~~(t / 1000 / 60 / 60 % 24);
+            if (h < 10) {
+                h = "0" + h;
+            }
+            var m = ~~(t / 1000 / 60 % 60);
+            if (m < 10) {
+                m = "0" + m;
+            }
+
+            var s = ~~(t / 1000 % 60);
+            if (s < 10) {
+                s = "0" + s;
+            }
+            document.getElementById('d').innerHTML = days;
+            document.getElementById('h').innerHTML = hours;
+            document.getElementById('m').innerHTML = minutes;
+            document.getElementById('s').innerHTML = leave3;
+        }
+        timer();
+        setInterval(timer, 1000);
+    </script>
+</body>
+
+</html>
