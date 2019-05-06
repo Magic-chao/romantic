@@ -13,12 +13,15 @@
         body {
             -webkit-font-smoothing: antialiased;
             font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
-            /*background-image: url('1.jpg');
-            background-size:100%;*/
             font-size: 85%;
             margin: 0;
+			width:100%;
+			height:100%;
+			/*
+			background-image: url('1.jpg') no-repeat;
+			background-size:100%;*/
         }
-        
+       
         h2 {
             font-size: 220%;
             font-weight: 400;
@@ -45,16 +48,15 @@
 </head>
 
 <body>
-    <div class="content">
-        <div id="Layer1" style="position:fixed; left:0px; top:0px; width:100%; height:100%">  
-		    <img src="1.jpg" width="100%" height="100%"/>
-	    </div>
-        <h2>姣姣，我们已经在一起了</h2>
-        <div class="timer">
-            <b id="d"></b> Days <b id="h"></b> Hours <b id="m"></b> Minutes <b id="s"></b> Seconds
-        </div>
-    </div>
-
+	<div id="Layer1" style="position:fixed; left:0px; top:0px; width:100%; height:100%">  
+		<img src="1.jpg" width="100%" height="100%"/>
+	</div>
+	<div class="content">
+		<h2>姣姣，我们已经在一起了</h2>
+		<div class="timer">
+			<b id="d"></b> Days <b id="h"></b> Hours <b id="m"></b> Minutes <b id="s"></b> Seconds
+		</div>
+	</div>
     <script>
         function timer() {
             
